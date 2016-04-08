@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<style type="text/css">
+	section { color: #6666ff; }
+	h1, h2, h3, h4, h5, h6 { color: #333 !important; }
+</style>
+<link rel="stylesheet" type="text/css" href="bootstrap.css">
+<title>Git basics</title>
+<!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+<!--[if lt IE 9]>
+	<script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+	<script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+<![endif]-->
+</head>
+
+<body>
+
+<div class="container">
+	<div class="row">
+		<div class="col-xs-12">
+			<main class="content" role="main">
+
+				<!-- header can be used for any group -->
+				<header>
+					<h3>Links</h3>
+					<p><a href="https://www.lynda.com/GitHub-tutorials/Creating-repo/162276/173441-4.html?" target="_blank">Lynda video</a></p>
+					<p><a href="http://jameswillweb.github.io/github-for-web-designers" target="_blank">Lynda supplement info</a></p>
+					<br>
+					<p><a href="https://help.github.com/articles/updating-credentials-from-the-osx-keychain/" target="_blank">Multiple user keychain access</a></p>
+					<p><a href="https://git-scm.com/book" target="_blank">https://git-scm.com/book</a></p>
+				</header>
+				<br><br>
+
+				<section>
+					<h3>Terminal</h3>
+					<br>
+					<h4>Configure</h4>
+					<pre>git config --global user.name ""</pre>
+					<pre>git config --global user.email ""</pre>
+					authenticate automatically without entering name/pass each session<pre>git config --global credential.helper osxkeychain</pre>
+					<br>
+					<h4>Create repo</h4>
+					to create repo<br><pre>git init</pre>
+					<br>
+					<h4>Status ** USE OFTEN **</h4>
+					<pre>git status</pre>
+					displays untracked files<pre>git status -u</pre>
+					<br>
+					<h4>Stage</h4>
+					stages file<pre>git add &lt;file&gt;</pre>
+					adds all files/folders in current folder to stage<pre>git add .</pre>
+					<br>
+					<h4>Commit</h4>
+					commits all with a message<pre>git commit -a -m "&lt;message&gt;"</pre>
+					if forget to use -m and you're in VIM (write and save file)<pre>esc :wq</pre>
+					add staged files to previous commit<pre>git commit --amend</pre>
+					<br>
+					<h4>Branch</h4>
+					displays all branches<br><pre>git branch</pre>
+					create branch (must still checkout)<br><pre>git branch &lt;folder&gt;</pre>
+					delete branch<br><pre>git branch -d &lt;folder&gt;</pre>
+					<br>
+					<h4>Checkout</h4>
+					switch to specified branch, so can start working in it<br><pre>git checkout &lt;folder&gt;</pre>
+					creates a new branch and checks it out<br><pre>git checkout -b &lt;folder&gt;</pre>
+					detach the commit and revert back to the last version of the commit<br><pre>git checkout &lt;commit&gt;</pre>
+					<br>
+					<h4>Merge</h4>
+					merge the branchname into the current branch<br><pre>git merge &lt;branchname&gt;</pre>
+					<br>
+					<h4>Log</h4>
+					list commit history<br><pre>git log</pre>
+					<br>
+				</section>
+			</main>
+		</div>
+	</div>
+</div>
+</body>
+
+</html>
