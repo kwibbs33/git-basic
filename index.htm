@@ -82,6 +82,12 @@
 					<h4>Rename</h4>
 					Move/rename file<br><pre>git mv &lt;original file name&gt; &lt;new file name&gt;</pre>
 					<br>
+					<h4>Reset</h4>
+					Start with log to see the list of previous SHAs<br><pre>git log</pre>
+					Soft and mixed reset to move the HEAD of current branch to point to previous SHA leaving the files in the staging index or working directory. Commits stay in place waiting to re-commit.<br><pre>git reset --soft &lt;SHA&gt;</pre><pre>git reset --mixed &lt;SHA&gt;</pre>
+					Hard reset to move the HEAD of current branch to point to previous SHA and permanently lose past changes.<br><pre>git reset --hard &lt;SHA&gt;
+git push --force</pre>
+					<br>
 				</section>
 			</main>
 		</div>
