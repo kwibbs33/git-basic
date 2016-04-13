@@ -70,9 +70,6 @@
 					<h4>Merge</h4>
 					merge the branchname into the current branch<br><pre>git merge &lt;branchname&gt;</pre>
 					<br>
-					<h4>Log</h4>
-					list commit history<br><pre>git log</pre>
-					<br>
 					<h4>Pull</h4>
 					pulls the current remote repository and merges it<br><pre>git pull</pre>
 					<br>
@@ -80,13 +77,20 @@
 					pushes the current branch to the remote repository<br><pre>git push</pre>
 					<br>
 					<h4>Rename</h4>
-					Move/rename file<br><pre>git mv &lt;original file name&gt; &lt;new file name&gt;</pre>
+					move/rename file<br><pre>git mv &lt;original file name&gt; &lt;new file name&gt;</pre>
+					<br>
+					<h4>Log</h4>
+					list commit history<br><pre>git log</pre>
 					<br>
 					<h4>Reset</h4>
-					Start with log to see the list of previous SHAs<br><pre>git log</pre>
+					start with log to see the list of previous SHAs<br><pre>git log</pre>
 					Soft and mixed reset to move the HEAD of current branch to point to previous SHA leaving the files in the staging index or working directory. Commits stay in place waiting to re-commit.<br><pre>git reset --soft &lt;SHA&gt;</pre><pre>git reset --mixed &lt;SHA&gt;</pre>
 					Hard reset to move the HEAD of current branch to point to previous SHA and permanently lose past changes.<br><pre>git reset --hard &lt;SHA&gt;
 git push --force</pre>
+					<br>
+					<h4>Tagging</h4>
+					display all tags<br><pre>git tag</pre>
+					create an annotated tag with a message<br><pre>git tag -a v1.4 -m &lt;version 1.4&gt;</pre>
 					<br>
 				</section>
 			</main>
