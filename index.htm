@@ -7,12 +7,18 @@
 	h1, h2, h3, h4, h5, h6 { color: #333 !important; }
 </style>
 <link rel="stylesheet" type="text/css" href="bootstrap.css">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css">
 <title>Git basics</title>
 <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
 <!--[if lt IE 9]>
 	<script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
 	<script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
 <![endif]-->
+<script type="text/javascript">
+function info(string) {
+	return " &nbsp; <span class='text-muted'><i class='fa fa-hand-o-right' style='margin-right:8px;'></i>"+string+"</span>";
+}
+</script>
 </head>
 
 <body>
@@ -31,6 +37,33 @@
 					<p><a href="https://help.github.com/articles/updating-credentials-from-the-osx-keychain/" title="Multiple user keychain access" target="_blank">Multiple user keychain access</a></p>
 					<p><a href="https://git-scm.com/book" title="git book" target="_blank">https://git-scm.com/book</a></p>
 				</header>
+				<br><br>
+
+				<article>
+					<h3>Origin / Master</h3>
+					<ul>
+						<li><b>master</b> is the current local branch</li>
+						<li><b>origin/master</b> is a <i>local copy</i> (duplicate) of the current branch named "master" on the remote named "origin"</li>
+						<li><b>origin</b> is the current remote branch</li>
+					</ul>
+					<a href="master-push.png" target="_blank">push</a><br>
+					<a href="master-fetch.png" target="_blank">fetch</a> - use merge (fast-forward) to point <b>master</b> to same commit<br>
+					<a href="master-fetch-change.png" target="_blank">fetch after I make changes locally</a> - use merge commit</a>
+					<br><br>
+					<ul class="list-inline">
+						<li>* fetch before you work</li>
+						<li>* fetch before you push</li>
+						<li>* fetch often</li>
+					</ul>
+				</article>
+				<br><br>
+
+				<article>
+					<h3>Managing Passwords</h3>
+					<a href="https://help.github.com/articles/caching-your-github-password-in-git/" target="_blank">Password Caching on a Mac</a>
+					<br>or<br>
+					<a href="https://help.github.com/articles/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent/" target="_blank">Generating SSH Keys on your computer</a>
+				</article>
 				<br><br>
 
 				<section>
@@ -53,7 +86,8 @@
 					adds all files/folders in current folder to stage<pre>git add .</pre>
 					<br>
 					<h4>Commit</h4>
-					commits all with a message<pre>git commit -a -m "&lt;message&gt;"</pre>
+					commits all with a message<pre>git commit -m "&lt;message&gt;"</pre>
+					add and commit with a message<pre>git commit -am "&lt;message&gt;"</pre>
 					if forget to use -m and you're in VIM (write and save file)<pre>esc :wq</pre>
 					add staged files to previous commit<pre>git commit --amend -m "&lt;message&gt;"</pre>
 					<br>
@@ -68,19 +102,25 @@
 					detach the commit and revert back to the last version of the commit<br><pre>git checkout &lt;commit&gt;</pre>
 					<br>
 					<h4>Merge</h4>
-					merge the branchname into the current branch<br><pre>git merge &lt;branchname&gt;</pre>
-					<br>
-					<h4>Pull</h4>
-					pulls the current remote repository and merges it<br><pre>git pull</pre>
+					merge the branchname into the current branch<br><pre>git merge &lt;branch&gt;</pre>
 					<br>
 					<h4>Push</h4>
 					pushes the current branch to the remote repository<br><pre>git push</pre>
+					-u sets up tracking so it remembers to push to particular branch each time without having to retype it<br><pre>git push -u origin &lt;branch&gt;</pre>
+					<br>
+					<h4>Fetch / Pull</h4>
+					fetch synchronizes origin/master with remote repo <a href="master-fetch-change.png" target="_blank"><i class="fa fa-icon fa-image"></i></a><br><pre>git fetch</pre>
+					merge state of remote master branch into local branch<br><pre>git merge origin/master</pre>
+					pull the current remote repository and merges it (git pull = git fetch + git merge)<br><pre>git pull</pre>
 					<br>
 					<h4>Rename</h4>
 					move/rename file<br><pre>git mv &lt;original file name&gt; &lt;new file name&gt;</pre>
 					<br>
 					<h4>Log</h4>
 					list commit history<br><pre>git log</pre>
+					list commit history condensed on one line<br><pre>git log --oneline</pre>
+					after fetching, check the history of fetched and local branches <a href="master-fetch-change.png" target="_blank"><i class="fa fa-icon fa-image"></i></a><br><pre>git log origin/master
+git log master</pre>
 					<br>
 					<h4>Reset</h4>
 					start with log to see the list of previous SHAs<br><pre>git log</pre>
@@ -91,6 +131,43 @@ git push --force</pre>
 					<h4>Tagging</h4>
 					display all tags<br><pre>git tag</pre>
 					create an annotated tag with a message<br><pre>git tag -a v1.4 -m &lt;version 1.4&gt;</pre>
+					push tags<br><pre>git push --tags</pre>
+					<br>
+					<br>
+					<h3>Workflow</h3>
+					<b>Person 1</b>
+<pre>
+git checkout master              <script type="text/javascript">document.write(info('checkout local master'))</script>
+git fetch                        <script type="text/javascript">document.write(info('start with fetch'))</script>
+git merge origin/master          <script type="text/javascript">document.write(info('merge remote master branch into local branch'))</script>
+git checkout -b &lt;branch&gt;           <script type="text/javascript">document.write(info('create and switch to new branch'))</script>
+git add &lt;branch.htm&gt;               <script type="text/javascript">document.write(info('add changes to staging'))</script>
+git commit -m "&lt;message&gt;"        <script type="text/javascript">document.write(info('commit all changes with message'))</script>
+git fetch                        <script type="text/javascript">document.write(info('before pushing, do another fetch'))</script>
+git push -u origin &lt;branch.htm&gt;    <script type="text/javascript">document.write(info('push my branch'))</script>
+</pre>
+					<b>Person 2</b>
+<pre>
+git checkout master                  <script type="text/javascript">document.write(info('checkout local master'))</script>
+git fetch                            <script type="text/javascript">document.write(info('start with fetch'))</script>
+git merge origin/master              <script type="text/javascript">document.write(info('not necessary here, but good practice'))</script>
+git checkout -b &lt;branch&gt; origin/&lt;branch&gt; <script type="text/javascript">document.write(info('pulls down remote branch and create new local branch - this also tracks branch for future push'))</script>
+git log                              <script type="text/javascript">document.write(info('view list of commits'))</script>
+git show &lt;SHA&gt; or &lt;branch&gt;             <script type="text/javascript">document.write(info('view changes in commit or file'))</script>
+git commit -am "&lt;message&gt;"           <script type="text/javascript">document.write(info('after making changes, add and commit changes with message'))</script>
+git fetch                            <script type="text/javascript">document.write(info('before pushing, do another fetch'))</script>
+git push                             <script type="text/javascript">document.write(info('push my branch'))</script>
+</pre>
+					<b>Person 1</b>
+<pre>
+git fetch                         <script type="text/javascript">document.write(info('start with fetch'))</script>
+git log                           <script type="text/javascript">document.write(info('view list of commits'))</script>
+git merge origin/&lt;branch&gt;              <script type="text/javascript">document.write(info('merge person 2 changes to my branch (fast forward)'))</script>
+git checkout master              <script type="text/javascript">document.write(info('need to fold changes into master branch'))</script>
+git fetch                         <script type="text/javascript">document.write(info('are there any other changes from other people?'))</script>
+git merge origin/master             <script type="text/javascript">document.write(info('merge master changes if there are any into my local repo'))</script>
+git merge &lt;branch&gt;             <script type="text/javascript">document.write(info('merge my changes from my branch into master'))</script>
+git push                             <script type="text/javascript">document.write(info('push my branch'))</script>
 					<br>
 				</section>
 			</main>
