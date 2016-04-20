@@ -102,7 +102,7 @@ function info(string) {
 					detach the commit and revert back to the last version of the commit<br><pre>git checkout &lt;commit&gt;</pre>
 					<br>
 					<h4>Merge</h4>
-					merge the branchname into the current branch<br><pre>git merge &lt;branch&gt;</pre>
+					merge the branch into the current branch<br><pre>git merge &lt;branch&gt;</pre>
 					<br>
 					<h4>Push</h4>
 					pushes the current branch to the remote repository<br><pre>git push</pre>
@@ -140,34 +140,36 @@ git push --force</pre>
 git checkout master              <script type="text/javascript">document.write(info('checkout local master'))</script>
 git fetch                        <script type="text/javascript">document.write(info('start with fetch'))</script>
 git merge origin/master          <script type="text/javascript">document.write(info('merge remote master branch into local branch'))</script>
-git checkout -b &lt;branch&gt;           <script type="text/javascript">document.write(info('create and switch to new branch'))</script>
-git add &lt;branch.htm&gt;               <script type="text/javascript">document.write(info('add changes to staging'))</script>
+git checkout -b &lt;branch&gt;         <script type="text/javascript">document.write(info('create and switch to new branch'))</script>
+git add &lt;branch.htm&gt;             <script type="text/javascript">document.write(info('add changes to staging'))</script>
 git commit -m "&lt;message&gt;"        <script type="text/javascript">document.write(info('commit all changes with message'))</script>
 git fetch                        <script type="text/javascript">document.write(info('before pushing, do another fetch'))</script>
-git push -u origin &lt;branch.htm&gt;    <script type="text/javascript">document.write(info('push my branch'))</script>
+git push -u origin &lt;branch.htm&gt;  <script type="text/javascript">document.write(info('push my branch'))</script>
 </pre>
 					<b>Person 2</b>
 <pre>
-git checkout master                  <script type="text/javascript">document.write(info('checkout local master'))</script>
-git fetch                            <script type="text/javascript">document.write(info('start with fetch'))</script>
-git merge origin/master              <script type="text/javascript">document.write(info('not necessary here, but good practice'))</script>
+git checkout master                    <script type="text/javascript">document.write(info('checkout local master'))</script>
+git fetch                              <script type="text/javascript">document.write(info('start with fetch'))</script>
+git merge origin/master                <script type="text/javascript">document.write(info('not necessary here, but good practice'))</script>
 git checkout -b &lt;branch&gt; origin/&lt;branch&gt; <script type="text/javascript">document.write(info('pulls down remote branch and create new local branch - this also tracks branch for future push'))</script>
-git log                              <script type="text/javascript">document.write(info('view list of commits'))</script>
+git log                                <script type="text/javascript">document.write(info('view list of commits'))</script>
 git show &lt;SHA&gt; or &lt;branch&gt;             <script type="text/javascript">document.write(info('view changes in commit or file'))</script>
-git commit -am "&lt;message&gt;"           <script type="text/javascript">document.write(info('after making changes, add and commit changes with message'))</script>
-git fetch                            <script type="text/javascript">document.write(info('before pushing, do another fetch'))</script>
-git push                             <script type="text/javascript">document.write(info('push my branch'))</script>
+git commit -am "&lt;message&gt;"             <script type="text/javascript">document.write(info('after making changes, add and commit changes with message'))</script>
+git fetch                              <script type="text/javascript">document.write(info('before pushing, do another fetch'))</script>
+git push                               <script type="text/javascript">document.write(info('push my branch'))</script>
 </pre>
 					<b>Person 1</b>
 <pre>
-git fetch                         <script type="text/javascript">document.write(info('start with fetch'))</script>
-git log                           <script type="text/javascript">document.write(info('view list of commits'))</script>
-git merge origin/&lt;branch&gt;              <script type="text/javascript">document.write(info('merge person 2 changes to my branch (fast forward)'))</script>
-git checkout master              <script type="text/javascript">document.write(info('need to fold changes into master branch'))</script>
-git fetch                         <script type="text/javascript">document.write(info('are there any other changes from other people?'))</script>
-git merge origin/master             <script type="text/javascript">document.write(info('merge master changes if there are any into my local repo'))</script>
+git fetch                      <script type="text/javascript">document.write(info('start with fetch'))</script>
+git log                        <script type="text/javascript">document.write(info('view list of commits'))</script>
+git merge origin/&lt;branch&gt;      <script type="text/javascript">document.write(info('merge person 2 changes to my branch (fast forward)'))</script>
+git checkout master            <script type="text/javascript">document.write(info('need to fold changes into master branch'))</script>
+git fetch                      <script type="text/javascript">document.write(info('are there any other changes from other people?'))</script>
+git merge origin/master        <script type="text/javascript">document.write(info('merge master changes if there are any into my local repo'))</script>
 git merge &lt;branch&gt;             <script type="text/javascript">document.write(info('merge my changes from my branch into master'))</script>
-git push                             <script type="text/javascript">document.write(info('push my branch'))</script>
+git push                       <script type="text/javascript">document.write(info('push my branch'))</script>
+</pre>
+					<br>
 					<br>
 				</section>
 			</main>
